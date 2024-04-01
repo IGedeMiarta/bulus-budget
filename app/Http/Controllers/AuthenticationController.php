@@ -2,14 +2,73 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AuthenticationController extends Controller
 {
+
     public function signin()
     {
-        return view('pages.signin');
+        $data['title'] = 'Login';
+        return view('pages.signin',$data);
     }
+    public function signup()
+    {
+        $data['title'] = 'Register';
+        return view('pages.signup',$data);
+    }
+    public function login(Request $request){
+        $credentials = $request->only('email', 'password');
+
+        // Validate input
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+        ]);
+
+        // Attempt authentication
+        if (Auth::attempt($credentials)) {
+            // Authentication successful, redirect to dashboard
+            return redirect()->route('dashboard');
+        } else {
+            // Authentication failed, return error response
+            return redirect()->back()->with('error','Invalid credentials');
+        }
+    }
+
+    public function register(Request $request){
+        $request->validate([
+            'name'  => 'required|min:6',
+            'email' => 'required|email',
+            'username'  => 'required|min:6|unique:users',
+            'password' => 'required|confirmed|min:6',
+            
+        ]);
+        DB::beginTransaction();
+        try {
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->username = $request->username;
+            $user->password = Hash::make($request->password);
+            $user->save();
+            DB::commit();
+
+            Auth::login($user);
+            //login with new registered;
+            return redirect()->route('dashboard');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->back()->with('error','Error: ' .$th->getMessage() );
+        }
+    }
+
+
     public function signin_cover()
     {
         return view('pages.signin-cover');
@@ -18,10 +77,7 @@ class AuthenticationController extends Controller
     {
         return view('pages.signin-cover2');
     }
-    public function signup()
-    {
-        return view('pages.signup');
-    }
+    
     public function signup_cover()
     {
         return view('pages.signup-cover');

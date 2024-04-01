@@ -28,10 +28,14 @@ use App\Http\Controllers\WidgetsController;
 |
 */
 
-// Route::get('', [Controller::class, 'index']);
+Route::get('/',[AuthenticationController::class,'signin'])->name('signin.index');
+Route::get('/login',[AuthenticationController::class,'signin'])->name('home');
+Route::post('/login',[AuthenticationController::class,'login'])->name('signin.post');
+Route::get('/register', [AuthenticationController::class, 'signup'])->name('signup.index');
+Route::post('/register', [AuthenticationController::class, 'register'])->name('signup.post');
 
 
-Route::get('/', [DashboardsController::class, 'index']);
+Route::get('/dashboard', [DashboardsController::class, 'index'])->name('dashboard');
 Route::get('index', [DashboardsController::class, 'index']);
 Route::get('index2', [DashboardsController::class, 'index2']);
 Route::get('index3', [DashboardsController::class, 'index3']);

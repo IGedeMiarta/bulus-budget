@@ -18,7 +18,7 @@
                     after some time.</p>
                 <div class="mt-5 flex flex-col justify-center items-center gap-2 sm:flex-row sm:gap-3">
                     <a class="w-full sm:w-auto inline-flex justify-center items-center gap-x-3 text-center bg-primary hover:bg-primary border border-transparent text-white text-sm font-medium rounded-sm focus:outline-none focus:ring-0 focus:ring-primary focus:ring-offset-0 focus:ring-offset-white transition py-2 px-3 dark:focus:ring-offset-white/10"
-                        href="{{ url('index') }}">
+                        href="{{ route('home') }}">
                         <i class="ri-arrow-left-line"></i>
                         Get Back to Home
                     </a>
