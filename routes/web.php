@@ -36,6 +36,7 @@ Route::post('/register', [AuthenticationController::class, 'register'])->name('s
 
 
 Route::get('/dashboard', [DashboardsController::class, 'index'])->name('dashboard');
+
 Route::get('index', [DashboardsController::class, 'index']);
 Route::get('index2', [DashboardsController::class, 'index2']);
 Route::get('index3', [DashboardsController::class, 'index3']);
