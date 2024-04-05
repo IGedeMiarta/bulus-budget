@@ -7,7 +7,7 @@
     <!-- META DATA -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tailwind Responsive Admin Web Dashboard Laravel Template">
+    <meta name="description" content="Bulus Budgetin. an aplication for budgetin">
     <meta name="keywords"
         content="admin, admin tailwind, laravel admin template, admin laravel, tailwind laravel, admin dashboard template, laravel tailwind, admin dashboard, admin panel, admin template, laravel admin dashboard, tailwind, laravel dashboard template, admin panel template, laravel admin panel, laravel dashboard">
 
