@@ -67,6 +67,10 @@ class AuthenticationController extends Controller
             return redirect()->back()->with('error','Error: ' .$th->getMessage() );
         }
     }
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('signin.index');
+    }
 
 
     public function signin_cover()

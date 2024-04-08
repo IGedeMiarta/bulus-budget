@@ -407,7 +407,7 @@
                                         <i class="ti ti-wallet text-lg"></i>
                                         Bal: $7,12,950
                                     </a>
-                                    <a href="{{ url('signin') }}" class="ti-dropdown-item">
+                                    <a href="{{ route('logout') }}" class="ti-dropdown-item">
                                         <i class="ti ti-logout  text-lg"></i>
                                         Log Out
                                     </a>
