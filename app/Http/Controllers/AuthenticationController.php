@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 class AuthenticationController extends Controller
 {
 
@@ -62,7 +65,7 @@ class AuthenticationController extends Controller
             $user->save();
             //send email with 4 digit number verification
             Mail::to($user->email)->send(new EmailVerification($verification_code));
-            
+           
             DB::commit();
             return redirect()->route('email.verify')->with('email', $user->email);
         } catch (\Throwable $th) {
