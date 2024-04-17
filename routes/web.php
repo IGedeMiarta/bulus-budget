@@ -29,11 +29,13 @@ use App\Http\Controllers\WidgetsController;
 */
 
 Route::middleware('guest')->group(function(){
-    Route::get('/',[AuthenticationController::class,'signin'])->name('signin.index');
+    Route::get('/',[AuthenticationController::class,'signin'])->name('home');
     Route::get('/login',[AuthenticationController::class,'signin'])->name('login');
     Route::post('/login',[AuthenticationController::class,'login'])->name('signin.post');
-    Route::get('/register', [AuthenticationController::class, 'signup'])->name('signup.index');
+    Route::get('/register', [AuthenticationController::class, 'signup'])->name('register');
     Route::post('/register', [AuthenticationController::class, 'register'])->name('signup.post');
+
+    Route::get('/verifiy-email',[AuthenticationController::class,'emailVerify'])->name('email.verify');
 });
 
 Route::middleware(['auth'])->group(function(){

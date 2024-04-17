@@ -20,8 +20,7 @@
                         <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">Sign up</h1>
                         <p class="mt-3 text-sm text-gray-600 dark:text-white/70">
                             Already have an account?
-                            <a class="text-primary decoration-2 hover:underline font-medium"
-                                href="{{ route('signin.index') }}">
+                            <a class="text-primary decoration-2 hover:underline font-medium" href="{{ route('login') }}">
                                 Sign in here
                             </a>
                         </p>

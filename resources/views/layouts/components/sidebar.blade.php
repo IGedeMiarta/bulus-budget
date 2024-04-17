@@ -3,14 +3,14 @@
             <!-- Start::main-sidebar-header -->
             <div class="main-sidebar-header">
                 <a href="{{ url('index') }}" class="header-logo">
-                    <img src="{{ asset('build/assets/img/brand-logos/desktop-logo.png') }}" alt="logo"
-                        class="main-logo desktop-logo">
-                    <img src="{{ asset('build/assets/img/brand-logos/toggle-logo.png') }}" alt="logo"
-                        class="main-logo toggle-logo">
-                    <img src="{{ asset('build/assets/img/brand-logos/desktop-dark.png') }}" alt="logo"
-                        class="main-logo desktop-dark">
-                    <img src="{{ asset('build/assets/img/brand-logos/toggle-dark.png') }}" alt="logo"
-                        class="main-logo toggle-dark">
+                    <img src="{{ asset('jai.png') }}" alt="logo" class="main-logo desktop-logo "
+                        style="max-width: 80px;">
+                    <img src="{{ asset('jai.png') }}" alt="logo" class="main-logo toggle-logo"
+                        style="max-width: 50px;">
+                    <img src="{{ asset('jai.png') }}" alt="logo" class="main-logo desktop-dark"
+                        style="max-width: 80px;">
+                    <img src="{{ asset('jai.png') }}" alt="logo" class="main-logo toggle-dark"
+                        style="max-width: 50px;">
                 </a>
             </div>
             <!-- End::main-sidebar-header -->

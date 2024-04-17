@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EmailVerification;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\Mail;
 class AuthenticationController extends Controller
 {
 
@@ -56,20 +57,29 @@ class AuthenticationController extends Controller
             $user->email = $request->email;
             $user->username = $request->username;
             $user->password = Hash::make($request->password);
+            $verification_code = mt_rand(1000, 9999);
+            $user->verification_code = $verification_code;
             $user->save();
+            //send email with 4 digit number verification
+            Mail::to($user->email)->send(new EmailVerification($verification_code));
+            
             DB::commit();
-
-            Auth::login($user);
-            //login with new registered;
-            return redirect()->route('dashboard');
+            return redirect()->route('email.verify')->with('email', $user->email);
         } catch (\Throwable $th) {
             DB::rollBack();
-            return redirect()->back()->with('error','Error: ' .$th->getMessage() );
+            dd($th->getMessage());
+            return redirect()->back()->with('error',$th->getMessage() );
         }
     }
+    public function emailVerify(Request $request){
+
+        $data['title'] = 'Email Verification';
+        return view('pages.verification',$data);
+    }
+
     public function logout(){
         Auth::logout();
-        return redirect()->route('signin.index');
+        return redirect()->route('login');
     }
 
 
