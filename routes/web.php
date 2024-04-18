@@ -35,38 +35,45 @@ Route::middleware('guest')->group(function(){
     Route::get('/register', [AuthenticationController::class, 'signup'])->name('register');
     Route::post('/register', [AuthenticationController::class, 'register'])->name('signup.post');
 
-    Route::get('/verifiy-email',[AuthenticationController::class,'emailVerify'])->name('email.verify');
 });
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('/logout',[AuthenticationController::class,'logout'])->name('logout');
-    Route::get('/dashboard', [DashboardsController::class, 'index'])->name('dashboard');
+    
+    Route::middleware('verifiedemail')->group(function(){
+        Route::get('/verifiy-email',[AuthenticationController::class,'emailVerify'])->name('email.verify');
+        Route::post('/verifiy-email',[AuthenticationController::class,'emailVerifyPost'])->name('email.verify.post');
+        Route::get('/resend-email',[AuthenticationController::class,'emailVerifyResend'])->name('email.verify.resend');
+    });
 
-    Route::get('index', [DashboardsController::class, 'index']);
-    Route::get('index2', [DashboardsController::class, 'index2']);
-    Route::get('index3', [DashboardsController::class, 'index3']);
-    Route::get('index4', [DashboardsController::class, 'index4']);
-    Route::get('index5', [DashboardsController::class, 'index5']);
-    Route::get('index6', [DashboardsController::class, 'index6']);
-    Route::get('index7', [DashboardsController::class, 'index7']);
-    Route::get('index8', [DashboardsController::class, 'index8']);
-    Route::get('index9', [DashboardsController::class, 'index9']);
-    Route::get('index10', [DashboardsController::class, 'index10']);
-    Route::get('index11', [DashboardsController::class, 'index11']);
-    Route::get('index12', [DashboardsController::class, 'index12']);
+    Route::middleware('emailverifed')->group(function(){
+        Route::get('/logout',[AuthenticationController::class,'logout'])->name('logout');
+        Route::get('/dashboard', [DashboardsController::class, 'index'])->name('dashboard');
 
-    Route::get('rangeslider', [AdvanceduiController::class, 'rangeslider']);
-    Route::get('calendar', [AdvanceduiController::class, 'calendar']);
-    Route::get('carousel', [AdvanceduiController::class, 'carousel']);
-    Route::get('gallery', [AdvanceduiController::class, 'gallery']);
-    Route::get('sweetalert', [AdvanceduiController::class, 'sweetalert']);
-    Route::get('ratings', [AdvanceduiController::class, 'ratings']);
-    Route::get('draggable', [AdvanceduiController::class, 'draggable']);
-    Route::get('notifications', [AdvanceduiController::class, 'notifications']);
-    Route::get('treeview', [AdvanceduiController::class, 'treeview']);
-    Route::get('filemanager', [AdvanceduiController::class, 'filemanager']);
-    Route::get('filemanager-list', [AdvanceduiController::class, 'filemanager_list']);
-    Route::get('file-details', [AdvanceduiController::class, 'file_details']);
+        Route::get('index', [DashboardsController::class, 'index']);
+        Route::get('index2', [DashboardsController::class, 'index2']);
+        Route::get('index3', [DashboardsController::class, 'index3']);
+        Route::get('index4', [DashboardsController::class, 'index4']);
+        Route::get('index5', [DashboardsController::class, 'index5']);
+        Route::get('index6', [DashboardsController::class, 'index6']);
+        Route::get('index7', [DashboardsController::class, 'index7']);
+        Route::get('index8', [DashboardsController::class, 'index8']);
+        Route::get('index9', [DashboardsController::class, 'index9']);
+        Route::get('index10', [DashboardsController::class, 'index10']);
+        Route::get('index11', [DashboardsController::class, 'index11']);
+        Route::get('index12', [DashboardsController::class, 'index12']);
+
+        Route::get('rangeslider', [AdvanceduiController::class, 'rangeslider']);
+        Route::get('calendar', [AdvanceduiController::class, 'calendar']);
+        Route::get('carousel', [AdvanceduiController::class, 'carousel']);
+        Route::get('gallery', [AdvanceduiController::class, 'gallery']);
+        Route::get('sweetalert', [AdvanceduiController::class, 'sweetalert']);
+        Route::get('ratings', [AdvanceduiController::class, 'ratings']);
+        Route::get('draggable', [AdvanceduiController::class, 'draggable']);
+        Route::get('notifications', [AdvanceduiController::class, 'notifications']);
+        Route::get('treeview', [AdvanceduiController::class, 'treeview']);
+        Route::get('filemanager', [AdvanceduiController::class, 'filemanager']);
+        Route::get('filemanager-list', [AdvanceduiController::class, 'filemanager_list']);
+        Route::get('file-details', [AdvanceduiController::class, 'file_details']);
 
     Route::get('signin', [AuthenticationController::class, 'signin']);
     Route::get('signin-cover', [AuthenticationController::class, 'signin_cover']);
@@ -187,4 +194,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('empty-page', [PagesController::class, 'empty_page']);
 
     Route::get('widgets', [WidgetsController::class, 'widgets']);
+    });
+
+   
 });

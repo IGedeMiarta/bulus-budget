@@ -37,18 +37,28 @@ class AuthenticationController extends Controller
 
         // Attempt authentication
         if (Auth::attempt($credentials)) {
-            // Authentication successful, redirect to dashboard
-            return redirect()->route('dashboard');
+            // Check if the user's email is verified
+            $user = Auth::user();
+            if ($user->email_verified_at === null) {
+                // Send email verification and redirect to email verification page
+                $this->sendEmail($user);
+                return redirect()->route('email.verify')->with('email', $user->email);
+            } else {
+
+                // Authentication successful, redirect to dashboard
+                return redirect()->route('dashboard');
+            }
         } else {
             // Authentication failed, return error response
             return redirect()->back()->with('error','Invalid credentials');
         }
     }
 
+
     public function register(Request $request){
         $request->validate([
             'name'  => 'required|min:6',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'username'  => 'required|min:6|unique:users',
             'password' => 'required|confirmed|min:6',
             
@@ -60,24 +70,58 @@ class AuthenticationController extends Controller
             $user->email = $request->email;
             $user->username = $request->username;
             $user->password = Hash::make($request->password);
-            $verification_code = mt_rand(1000, 9999);
-            $user->verification_code = $verification_code;
             $user->save();
             //send email with 4 digit number verification
-            Mail::to($user->email)->send(new EmailVerification($verification_code));
-           
+            
+            $this->sendEmail($user);
+            
+            $request->session()->put('email',$user->email);
+            
             DB::commit();
-            return redirect()->route('email.verify')->with('email', $user->email);
+
+            Auth::login($user);
+
+            return redirect()->route('email.verify');
         } catch (\Throwable $th) {
             DB::rollBack();
-            dd($th->getMessage());
             return redirect()->back()->with('error',$th->getMessage() );
         }
     }
-    public function emailVerify(Request $request){
+    public function sendEmail($user){
+        $verification_code = mt_rand(1000, 9999);
+        $user->verification_code = $verification_code;
+        $user->save();
+        Mail::to($user->email)->send(new EmailVerification($user->verification_code));
+    }
+   
 
+    public function emailVerify(Request $request){
+        $user = Auth::user();
         $data['title'] = 'Email Verification';
+        $request->session()->put('email',$user->email);
         return view('pages.verification',$data);
+    }
+     public function emailVerifyPost(Request $request){
+        $code = implode('', $request->code);
+        $user = Auth::user();
+
+        if($user->verification_code !== $code){
+            return redirect()->back()->with('error', 'Verification code does not match.');
+        } else {
+            // Update user's email_verified_at field
+            $user->email_verified_at = now();
+            $user->verification_code = null;
+            $user->save();
+            
+            $request->session()->forget('email');
+            return redirect()->route('dashboard')->with('success', 'Email verified successfully.');
+        }
+    }
+
+    public function emailVerifyResend(){
+        $user = Auth::user();
+        $this->sendEmail($user);
+        return redirect()->back()->with('success','Resend Email Virify Success, Plase Check your email');
     }
 
     public function logout(){
