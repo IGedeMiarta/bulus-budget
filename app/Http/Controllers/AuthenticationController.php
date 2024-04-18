@@ -70,6 +70,7 @@ class AuthenticationController extends Controller
             $user->username = $request->username;
             $user->password = Hash::make($request->password);
             $user->role_id = 2;
+            $user->section_id = 1;
             $user->save();
             //send email with 4 digit number verification
             
