@@ -39,6 +39,7 @@
 
 
     @yield('styles')
+    @livewireStyles
 
 </head>
 
@@ -53,12 +54,13 @@
     <div class="page">
 
         <!-- SIDEBAR -->
-        @include('layouts.components.sidebar')
+        <livewire:components.sidebar />
 
         <!-- END SIDEBAR -->
 
         <!-- HEADER -->
-        @include('layouts.components.header')
+        <livewire:components.topbar />
+
 
         <!-- END HEADER -->
 
@@ -72,7 +74,8 @@
         <!-- END SEARCH-MODAL -->
 
         <!-- FOOTER -->
-        @include('layouts.components.footer')
+        {{-- @include('layouts.components.footer') --}}
+        <livewire:components.footer />
 
         <!-- END FOOTER -->
 
@@ -95,7 +98,7 @@
 
 
     <!-- END SCRIPTS -->
-
+    @livewireScripts
 </body>
 
 </html>

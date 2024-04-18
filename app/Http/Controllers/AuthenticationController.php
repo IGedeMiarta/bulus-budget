@@ -44,7 +44,6 @@ class AuthenticationController extends Controller
                 $this->sendEmail($user);
                 return redirect()->route('email.verify')->with('email', $user->email);
             } else {
-
                 // Authentication successful, redirect to dashboard
                 return redirect()->route('dashboard');
             }
@@ -70,6 +69,7 @@ class AuthenticationController extends Controller
             $user->email = $request->email;
             $user->username = $request->username;
             $user->password = Hash::make($request->password);
+            $user->role_id = 2;
             $user->save();
             //send email with 4 digit number verification
             

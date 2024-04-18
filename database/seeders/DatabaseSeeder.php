@@ -16,13 +16,20 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         \App\Models\User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'username'  => 'test',
+            'name' => 'Admin',
+            'email' => 'admin@mail.com',
+            'username'  => 'admin',
             'password'  => Hash::make('password'),
             'role_id'   => 1,
             'section_id'=> 1,
+            'email_verified_at'=> now(),
             'status'    => 1
+        ]);
+
+        $this->call([
+            AllSectionSeeder::class,
+            RoleSeeder::class,
+            SectionSeeder::class
         ]);
     }
 }

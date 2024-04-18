@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sections', function (Blueprint $table) {
+        Schema::create('all_sections', function (Blueprint $table) {
             $table->id();
-            $table->string('section_name');
-            $table->text('section_arr')->comment('array of all section id');
+            $table->string('name');
+            $table->string('route');
+            $table->string('group')->nullable();
+            $table->string('icon')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sections');
+        Schema::dropIfExists('all_sections');
     }
 };
