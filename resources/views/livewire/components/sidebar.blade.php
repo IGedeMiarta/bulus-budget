@@ -36,35 +36,63 @@
                             </a>
                         </li>
                     @endforeach
-
-                    {{-- <li class="slide  has-sub">
-                            <a href="javascript:void(0);" class="side-menu__item">
-                                <i class="ri-home-8-line side-menu__icon"></i>
-                                <span class="side-menu__label">Dashboards</span>
-                                <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
-                            </a>
-                            <ul class="slide-menu child1">
-                                <li class="slide side-menu__label1"><a href="javascript:void(0)">Dashboards</a></li>
-                                <li class="slide"><a href="{{ url('index') }}" class="side-menu__item">Sales</a></li>
-                                <li class="slide"><a href="{{ url('index2') }}" class="side-menu__item">Ecommerce</a>
-                                </li>
-                                <li class="slide"><a href="{{ url('index3') }}" class="side-menu__item">Crypto</a></li>
-                                <li class="slide"><a href="{{ url('index4') }}" class="side-menu__item">Jobs</a></li>
-                                <li class="slide"><a href="{{ url('index5') }}" class="side-menu__item">NFT</a></li>
-                                <li class="slide"><a href="{{ url('index6') }}" class="side-menu__item">Analytics</a>
-                                </li>
-                                <li class="slide"><a href="{{ url('index7') }}" class="side-menu__item">Projects</a>
-                                </li>
-                                <li class="slide"><a href="{{ url('index8') }}" class="side-menu__item">HRM</a></li>
-                                <li class="slide"><a href="{{ url('index9') }}" class="side-menu__item">CRM</a></li>
-                                <li class="slide"><a href="{{ url('index10') }}" class="side-menu__item">Personal</a>
-                                </li>
-                                <li class="slide"><a href="{{ url('index11') }}" class="side-menu__item">Stocks</a>
-                                </li>
-                                <li class="slide"><a href="{{ url('index12') }}" class="side-menu__item">Course</a>
-                                </li>
-                            </ul>
-                        </li> --}}
+                    <li class="slide__category"><span class="category-name">Feature</span></li>
+                    <li class="slide  has-sub">
+                        <a href="javascript:void(0);" class="side-menu__item">
+                            <i class="ri-file-text-line side-menu__icon"></i>
+                            <span class="side-menu__label">Master Data</span>
+                            <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
+                        </a>
+                        <ul class="slide-menu child1">
+                            {{-- <li class="slide side-menu__label1"><a href="javascript:void(0)">Master Item</a></li> --}}
+                            <li class="slide"><a href="javascript:void(0)" class="side-menu__item">Master Item</a>
+                            </li>
+                            <li class="slide"><a href="javascript:void(0)" class="side-menu__item">Master Carline</a>
+                            </li>
+                            <li class="slide"><a href="javascript:void(0)" class="side-menu__item">Master Term</a>
+                            </li>
+                            <li class="slide"><a href="javascript:void(0)" class="side-menu__item">Master Period</a>
+                            </li>
+                            <li class="slide"><a href="javascript:void(0)" class="side-menu__item">Master User</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="slide  has-sub">
+                        <a href="javascript:void(0);" class="side-menu__item">
+                            <i class="ri-inbox-line side-menu__icon"></i>
+                            <span class="side-menu__label">Plans </span>
+                            <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
+                        </a>
+                        <ul class="slide-menu child1">
+                            <li class="slide"><a href="javascript:void(0)" class="side-menu__item">Budget Plan</a>
+                            </li>
+                            <li class="slide"><a href="javascript:void(0)" class="side-menu__item">Profit
+                                    Improvment</a>
+                            </li>
+                            <li class="slide"><a href="javascript:void(0)" class="side-menu__item">Additional
+                                    Butget</a>
+                            </li>
+                            <li class="slide"><a href="javascript:void(0)" class="side-menu__item">Budget Plan
+                                    Generation</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="slide  has-sub">
+                        <a href="javascript:void(0);" class="side-menu__item">
+                            <i class="ri-stack-line side-menu__icon"></i>
+                            <span class="side-menu__label">Actual Section </span>
+                            <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
+                        </a>
+                        <ul class="slide-menu child1">
+                            {{-- <li class="slide side-menu__label1"><a href="javascript:void(0)">Budget Realization</a></li> --}}
+                            <li class="slide"><a href="javascript:void(0)" class="side-menu__item">Budget Realization
+                                </a>
+                            </li>
+                            <li class="slide"><a href="javascript:void(0)" class="side-menu__item">Compare Plan vs ACT
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <!-- End::slide -->
 
                     <!-- Start::slide -->
@@ -94,17 +122,20 @@
                                         class="side-menu__item">Accordion</a></li>
                                 <li class="slide"><a href="{{ url('alerts') }}" class="side-menu__item">Alerts</a>
                                 </li>
-                                <li class="slide"><a href="{{ url('avatars') }}" class="side-menu__item">Avatars</a>
+                                <li class="slide"><a href="{{ url('avatars') }}"
+                                        class="side-menu__item">Avatars</a>
                                 </li>
                                 <li class="slide"><a href="{{ url('badges') }}" class="side-menu__item">Badges</a>
                                 </li>
                                 <li class="slide"><a href="{{ url('blockquotes') }}"
                                         class="side-menu__item">Blockquotes</a></li>
-                                <li class="slide"><a href="{{ url('buttons') }}" class="side-menu__item">Buttons</a>
+                                <li class="slide"><a href="{{ url('buttons') }}"
+                                        class="side-menu__item">Buttons</a>
                                 </li>
                                 <li class="slide"><a href="{{ url('cards') }}" class="side-menu__item">Cards</a>
                                 </li>
-                                <li class="slide"><a href="{{ url('collapse') }}" class="side-menu__item">Collapse</a>
+                                <li class="slide"><a href="{{ url('collapse') }}"
+                                        class="side-menu__item">Collapse</a>
                                 </li>
                                 <li class="slide"><a href="{{ url('list-group') }}" class="side-menu__item">List
                                         Group</a></li>
@@ -112,11 +143,14 @@
                                 </li>
                                 <li class="slide"><a href="{{ url('indicators') }}"
                                         class="side-menu__item">Indicators</a></li>
-                                <li class="slide"><a href="{{ url('progress') }}" class="side-menu__item">Progress</a>
+                                <li class="slide"><a href="{{ url('progress') }}"
+                                        class="side-menu__item">Progress</a>
                                 </li>
-                                <li class="slide"><a href="{{ url('skeleton') }}" class="side-menu__item">Skeleton</a>
+                                <li class="slide"><a href="{{ url('skeleton') }}"
+                                        class="side-menu__item">Skeleton</a>
                                 </li>
-                                <li class="slide"><a href="{{ url('spinners') }}" class="side-menu__item">Spinners</a>
+                                <li class="slide"><a href="{{ url('spinners') }}"
+                                        class="side-menu__item">Spinners</a>
                                 </li>
                                 <li class="slide"><a href="{{ url('toast') }}" class="side-menu__item">Toast</a>
                                 </li>
