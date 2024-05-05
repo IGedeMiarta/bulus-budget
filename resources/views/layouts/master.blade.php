@@ -15,7 +15,7 @@
     <title>Bulus Budget - {{ $title ?? '' }} </title>
 
     <!-- FAVICON -->
-    <link rel="shortcut icon" href="{{ asset('build/assets/img/brand-logos/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('jai.png') }}">
 
     <!-- ICONS CSS -->
     <link href="{{ asset('build/assets/iconfonts/icons.css') }}" rel="stylesheet">
@@ -27,6 +27,8 @@
     <!-- APP SCSS -->
     @vite(['resources/sass/app.scss'])
 
+    <link rel="stylesheet" href="{{ asset('build/assets/libs/sweetalert2/sweetalert2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/libs/animate.css/animate.min.css') }}">
 
     <!-- SIMPLEBAR CSS -->
     <link rel="stylesheet" href="{{ asset('build/assets/libs/simplebar/simplebar.min.css') }}">
@@ -37,7 +39,7 @@
     <!-- MAIN JS -->
     <script src="{{ asset('build/assets/main.js') }}"></script>
 
-
+    <!-- ANIMATE CSS -->
     @yield('styles')
     @livewireStyles
 
@@ -77,13 +79,33 @@
         {{-- @include('layouts.components.footer') --}}
         <livewire:components.footer />
 
+
         <!-- END FOOTER -->
 
     </div>
     <!-- END PAGE-->
 
     <!-- SCRIPTS -->
-
+    <script src="{{ asset('build/assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+    @if (Session::has('success'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "info",
+                title: "{{ Session::get('success') }}",
+            });
+        </script>
+    @endif
     @include('layouts.components.scripts')
 
     <!-- STICKY JS -->
@@ -99,6 +121,8 @@
 
     <!-- END SCRIPTS -->
     @livewireScripts
+    <!-- SWEETALERT JS -->
+
 </body>
 
 </html>

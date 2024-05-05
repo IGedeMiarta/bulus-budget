@@ -14,7 +14,7 @@
     <title> Bulus - {{ $title ?? 'Oops, something went wrong.' }} </title>
 
     <!-- FAVICON -->
-    <link rel="shortcut icon" href="{{ asset('build/assets/img/brand-logos/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('jai.png') }}">
 
     <!-- APP CSS -->
     @vite(['resources/css/app.css'])

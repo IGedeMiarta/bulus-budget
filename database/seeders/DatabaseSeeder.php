@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Item;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -25,6 +27,8 @@ class DatabaseSeeder extends Seeder
             'email_verified_at'=> now(),
             'status'    => 1
         ]);
+
+        Item::factory(500)->create();
 
         $this->call([
             AllSectionSeeder::class,
