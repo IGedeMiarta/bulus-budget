@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Carline;
 use App\Models\Item;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -29,6 +30,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Item::factory(500)->create();
+        Carline::factory(500)->create();
 
         $this->call([
             AllSectionSeeder::class,

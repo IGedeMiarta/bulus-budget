@@ -52,6 +52,7 @@ Route::middleware(['auth'])->group(function(){
         Route::get('index', [DashboardsController::class, 'index']);
 
         Route::get('item',[MasterDataController::class,'item'])->name('item');
+        Route::get('carline',[MasterDataController::class,'carline'])->name('carline');
 
 
 

@@ -19,8 +19,9 @@
                             <i class="ti ti-plus"></i> Add {{ $title ?? '' }}
                         </button>
                     </div>
-                    <livewire:master.item.add />
-                    <livewire:master.item.table />
+                    <livewire:master.carline.form />
+
+                    <livewire:master.carline.table />
                 </div>
             </div>
             <!-- End::row-1 -->

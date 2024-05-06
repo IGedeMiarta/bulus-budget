@@ -47,7 +47,8 @@
                             {{-- <li class="slide side-menu__label1"><a href="javascript:void(0)">Master Item</a></li> --}}
                             <li class="slide"><a href="{{ route('item') }}" class="side-menu__item">Master Item</a>
                             </li>
-                            <li class="slide"><a href="javascript:void(0)" class="side-menu__item">Master Carline</a>
+                            <li class="slide"><a href="{{ route('carline') }}" class="side-menu__item">Master
+                                    Carline</a>
                             </li>
                             <li class="slide"><a href="javascript:void(0)" class="side-menu__item">Master Term</a>
                             </li>

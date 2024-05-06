@@ -10,4 +10,8 @@ class MasterDataController extends Controller
         $data['title'] = 'Master Item';
         return view('master.item',$data);
     }
+    public function carline(){
+        $data['title'] = 'Master Carline';
+        return view('master.carline',$data);
+    }
 }
