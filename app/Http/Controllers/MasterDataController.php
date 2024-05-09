@@ -14,4 +14,12 @@ class MasterDataController extends Controller
         $data['title'] = 'Master Carline';
         return view('master.carline',$data);
     }
+    public function term(){
+        $data['title'] = 'Master Term';
+        return view('master.term',$data);
+    }
+     public function period(){
+        $data['title'] = 'Master Period';
+        return view('master.period',$data);
+    }
 }

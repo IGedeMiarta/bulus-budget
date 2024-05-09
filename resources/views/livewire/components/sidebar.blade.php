@@ -44,15 +44,15 @@
                             <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
                         </a>
                         <ul class="slide-menu child1">
-                            {{-- <li class="slide side-menu__label1"><a href="javascript:void(0)">Master Item</a></li> --}}
                             <li class="slide"><a href="{{ route('item') }}" class="side-menu__item">Master Item</a>
                             </li>
                             <li class="slide"><a href="{{ route('carline') }}" class="side-menu__item">Master
                                     Carline</a>
                             </li>
-                            <li class="slide"><a href="javascript:void(0)" class="side-menu__item">Master Term</a>
+                            <li class="slide"><a href="{{ route('term') }}" class="side-menu__item">Master Term</a>
                             </li>
-                            <li class="slide"><a href="javascript:void(0)" class="side-menu__item">Master Period</a>
+                            <li class="slide"><a href="{{ route('period') }}" class="side-menu__item">Master
+                                    Period</a>
                             </li>
                             <li class="slide"><a href="javascript:void(0)" class="side-menu__item">Master User</a>
                             </li>

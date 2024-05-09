@@ -118,9 +118,9 @@
     <!-- APP JS -->
     @vite('resources/js/app.js')
 
-
     <!-- END SCRIPTS -->
     @livewireScripts
+    @stack('script')
     <!-- SWEETALERT JS -->
 
 </body>

@@ -53,6 +53,8 @@ Route::middleware(['auth'])->group(function(){
 
         Route::get('item',[MasterDataController::class,'item'])->name('item');
         Route::get('carline',[MasterDataController::class,'carline'])->name('carline');
+        Route::get('term',[MasterDataController::class,'term'])->name('term');
+        Route::get('period',[MasterDataController::class,'period'])->name('period');
 
 
 

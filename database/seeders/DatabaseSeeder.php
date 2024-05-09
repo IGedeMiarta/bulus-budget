@@ -6,6 +6,8 @@ namespace Database\Seeders;
 
 use App\Models\Carline;
 use App\Models\Item;
+use App\Models\Period;
+use App\Models\Term;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -28,9 +30,10 @@ class DatabaseSeeder extends Seeder
             'email_verified_at'=> now(),
             'status'    => 1
         ]);
-
+        Term::factory(100)->create();
         Item::factory(500)->create();
         Carline::factory(500)->create();
+        Period::factory(100)->create();
 
         $this->call([
             AllSectionSeeder::class,

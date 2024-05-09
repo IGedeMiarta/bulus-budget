@@ -1,7 +1,7 @@
 <div>
     <div class="box-body">
         <div class="table-bordered rounded-sm ti-custom-table-head">
-            <div class="py-2 px-3">
+            {{-- <div class="py-2 px-3">
                 <div class="relative max-w-xs">
                     <label for="hs-table-search2" class="sr-only">Search</label>
                     <input type="text" name="hs-table-search2" id="hs-table-search2"
@@ -15,7 +15,7 @@
                         </svg>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="overflow-auto">
                 <table class="ti-custom-table ti-custom-table-head">
                     <thead class="bg-gray-50 dark:bg-black/20">
@@ -49,7 +49,7 @@
                                         <i class="ti ti-edit"></i>
                                     </button>
                                     <button type="button" class="ti-btn ti-btn-danger rounded-full"
-                                        wire:click.prevent="delete({{ $item->id }})">
+                                        @click="$dispatch('confirm-delete', { get_id: {{ $item->id }} })">
                                         <i class="ti ti-trash"></i>
                                     </button>
                                 </td>
@@ -63,4 +63,6 @@
             {{ $table->links() }}
         </div>
     </div>
+    @include('layouts.confirm-delete')
+
 </div>

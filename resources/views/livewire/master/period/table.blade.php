@@ -21,11 +21,10 @@
                     <thead class="bg-gray-50 dark:bg-black/20">
                         <tr>
                             <th scope="col" class="">No</th>
-                            <th scope="col" class="">Group</th>
-                            <th scope="col" class="">Sub Group</th>
-                            <th scope="col" class="">Item Name</th>
-                            <th scope="col" class="">Item Code</th>
-                            <th scope="col" class="!text-center">Item Status</th>
+                            <th scope="col" class="">Term</th>
+                            <th scope="col" class="">Period Name</th>
+                            <th scope="col" class="">Period Group</th>
+                            <th scope="col" class="!text-center">Status</th>
                             <th scope="col" class="!text-center">Action</th>
                         </tr>
                     </thead>
@@ -33,10 +32,9 @@
                         @foreach ($table as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td class="font-medium">{{ $item->group }}</td>
-                                <td>{{ $item->sub_group }}</td>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->code }}</td>
+                                <td>{{ $item->getTerm->name }}</td>
+                                <td class="font-medium">{{ $item->name }}</td>
+                                <td>{{ $item->group }}</td>
                                 <td class="!text-center">{{ $item->status ? 'Active' : 'Non-Active' }}</td>
                                 <td class="text-center font-medium">
                                     <button type="button" class="ti-btn ti-btn-warning rounded-full"
@@ -44,7 +42,7 @@
                                         wire:click.prevent="edit({{ $item->id }})">
                                         <i class="ti ti-edit"></i>
                                     </button>
-                                    <button type="button" class="ti-btn ti-btn-danger rounded-full"
+                                    <button type="button" class="ti-btn ti-btn-danger rounded-full deleteButton"
                                         @click="$dispatch('confirm-delete', { get_id: {{ $item->id }} })">
                                         <i class="ti ti-trash"></i>
                                     </button>
